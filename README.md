@@ -2,11 +2,11 @@
 
 A simple template for top notch Shopify applications.
 
-**Outstanding features:**
+Outstanding features:
 
-* **Pay as you go architecture with Firebase**
-* **Shopify Polaris standard interface**
-* **Built on React, React Router, Express, and GraphQL API**
+* Pay as you go architecture with Firebase
+* Shopify Polaris standard interface
+* Built on React, React Router, Express, and GraphQL API
 
 ## TODOs
 
