@@ -10,7 +10,10 @@ Outstanding features:
 
 ## TODOs
 
-- [ ] Demo Storefront
+- [x] fix samesite cookie
+- [x] demo webhook
+- [ ] demo storefront
+
 
 ## Installation
 
