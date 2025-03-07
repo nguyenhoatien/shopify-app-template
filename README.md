@@ -10,7 +10,7 @@ Outstanding features:
 
 ## TODOs
 
-- [] Demo Storefront
+- [ ] Demo Storefront
 
 ## Installation
 
