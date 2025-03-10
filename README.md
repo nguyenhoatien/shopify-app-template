@@ -1,51 +1,54 @@
-# Shopify App Template (Powered by Firebase)
+# Shopify App Template (Firebase)
 
-A simple template for top notch Shopify applications.
+This is a simple template to help you build great Shopify apps.
 
-Outstanding features:
+**Key Features:**
 
-* Pay as you go architecture with Firebase
-* Shopify Polaris standard interface
-* Built on React, React Router, Express, and GraphQL API
+*   **Pay-as-you-go:** Uses Firebase for cost-effective scaling.
+*   **Shopify Look & Feel:** Uses the Shopify Polaris design system.
+*   **Modern Tech:** Built with React, React Router, Express, and GraphQL.
 
-## TODOs
+## What's Left To Do (TODOs):
 
-- [x] fix samesite cookie
-- [x] demo webhook
-- [ ] demo storefront
+*   [x] Fix SameSite cookie issue.
+*   [x] Add a webhook demo.
+*   [ ] Add a storefront demo.
 
+## Getting Started (Installation)
 
-## Installation
+1.  **Install:**
+    ```bash
+    npm install
+    ```
+2.  **First-Time Setup:**
+    ```bash
+    npm run setup
+    ```
 
-1. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-2. **Setup application (first time):**
-   ```bash
-   npm setup
-   ```
+## Running the App (Start)
 
-## Start
+1.  **Start Tunnel (Cloudflared):**
+    ```bash
+    npm run cloudflared
+    ```
+2.  **Configure `shopify.app.toml`:**
+    *   Open the `shopify.app.toml` file.
+    *   Update the settings as needed for your app.
+3.  **Start Development Server:**
+    ```bash
+    npm run dev
+    ```
 
-1. **Run tunnel (cloudflared):**
-   ```bash
-   npm run cloudflared
-   ```
-2. **Configure shopify.app.toml:**
-   > Change the necessary parameters in the shopify.app.toml file.
-3. **Run dev:**
-   ```bash
-   npm run dev
-   ```
+## Deploying Your App (Deploy)
 
-## Deploy
+1.  **Deploy:**
+    ```bash
+    npm run deploy
+    ```
 
-1. **Deploy application:**
-   ```bash
-   npm run deploy
-   ```
+## Important Notes
 
-## Note
-
-> The .env file will be automatically created. Focus on configuring the files: .firebaserc (for Firebase) and shopify.app.toml (for Shopify App).
+*   The `.env` file will be created automatically.
+*   Make sure to configure these files:
+    *   `.firebaserc` (for Firebase settings)
+    *   `shopify.app.toml` (for Shopify App settings)
