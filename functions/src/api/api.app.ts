@@ -4,18 +4,19 @@ import shopify from '../shopify.server';
 
 const app = express();
 
-app.get('/api/app/', shopify.validateAuthenticatedSession(), (_, res) => {
+app.use(shopify.validateAuthenticatedSession());
+
+app.get('/api/app/', (_, res) => {
   res.send('Hello world!');
 });
 
-app.post('/api/app/product/generate/', shopify.validateAuthenticatedSession(),
-  async (req, res) => {
-    const {color} = req.body;
-    const session = res.locals.shopify.session;
-    const client = new shopify.api.clients.Graphql({session});
+app.post('/api/app/product/generate/', async (req, res) => {
+  const {color} = req.body;
+  const session = res.locals.shopify.session;
+  const client = new shopify.api.clients.Graphql({session});
 
-    const response = await client.request(
-      `#graphql
+  const response = await client.request(
+    `#graphql
       mutation populateProduct($product: ProductCreateInput!) {
         productCreate(product: $product) {
           product {
@@ -36,18 +37,18 @@ app.post('/api/app/product/generate/', shopify.validateAuthenticatedSession(),
           }
         }
       }`,
-      {
-        variables: {
-          product: {
-            title: `${color} Snowboard`,
-          },
+    {
+      variables: {
+        product: {
+          title: `${color} Snowboard`,
         },
-      }
-    );
-    const product = response.data.productCreate.product;
-    const variantId = product.variants.edges[0].node.id;
-    const variantResponse = await client.request(
-      `#graphql
+      },
+    }
+  );
+  const product = response.data.productCreate.product;
+  const variantId = product.variants.edges[0].node.id;
+  const variantResponse = await client.request(
+    `#graphql
       mutation updateVariant(
         $productId: ID!,
         $variants: [ProductVariantsBulkInput!]!
@@ -61,19 +62,18 @@ app.post('/api/app/product/generate/', shopify.validateAuthenticatedSession(),
           }
         }
       }`,
-      {
-        variables: {
-          productId: product.id,
-          variants: [{id: variantId, price: '100.00'}],
-        },
+    {
+      variables: {
+        productId: product.id,
+        variants: [{id: variantId, price: '100.00'}],
       },
-    );
+    },
+  );
 
-    res.json({
-      product,
-      variant: variantResponse.data.productVariantsBulkUpdate.productVariants,
-    });
-  }
-);
+  res.json({
+    product,
+    variant: variantResponse.data.productVariantsBulkUpdate.productVariants,
+  });
+});
 
 export default onRequest(app);

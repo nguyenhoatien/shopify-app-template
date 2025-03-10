@@ -1,23 +1,27 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "345807df431aedc80af38c5c45ef2ecb"
-application_url = "https://my-awesome-project-e66af.web.app"
-embedded = true
 name = "My Awesome App"
 handle = "my-awesome-app-155"
-
-[build]
-include_config_on_deploy = true
-
-[webhooks]
-api_version = "2025-01"
+application_url = "https://my-awesome-project-e66af.web.app/"
+embedded = true
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
 scopes = "read_products,write_products"
 
 [auth]
-redirect_urls = [ "https://my-awesome-project-e66af.web.app/api/auth/callback/" ]
+redirect_urls = [
+  "https://my-awesome-project-e66af.web.app/api/auth/callback/"
+]
+
+[webhooks]
+api_version = "2025-01"
+
+[app_proxy]
+url = "https://my-awesome-project-e66af.web.app/api/storefront/"
+subpath = "my-awesome-app-155"
+prefix = "apps"
 
 [pos]
 embedded = false

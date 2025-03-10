@@ -8,7 +8,7 @@ import {
 } from '../shopify.app.json';
 import {db} from './firebase.server';
 
-const sessionStorage = {
+export const sessionStorage = {
   collection: db.collection('shopify-sessions'),
   async storeSession(session: Session) {
     await this.collection.doc(session.id).set(session.toObject());
