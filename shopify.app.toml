@@ -3,7 +3,7 @@
 client_id = "345807df431aedc80af38c5c45ef2ecb"
 name = "My Awesome App"
 handle = "my-awesome-app-155"
-application_url = "https://my-awesome-project-e66af.web.app/"
+application_url = "https://my-awesome-project-e66af.web.app/app/"
 embedded = true
 
 [build]
