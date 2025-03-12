@@ -2,5 +2,6 @@
     "eslint.workingDirectories": [
         "functions",
         "hosting"
-    ]
+    ],
+    "editor.tabSize": 2
 }
