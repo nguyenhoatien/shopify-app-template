@@ -4,6 +4,8 @@ import { AppProvider as PolarisAppProvider } from '@shopify/polaris';
 import { NavMenu } from '@shopify/app-bridge-react';
 import '@shopify/polaris/build/esm/styles.css';
 
+import enPolarisTranslations from '@shopify/polaris/locales/en.json';
+
 import Index from './index';
 import NotFound from './404';
 import AppLayout from './app/_layout';
@@ -15,7 +17,7 @@ const url = new URL(location.href);
 
 // https://reactrouter.com/start/library/routing
 createRoot(document.getElementById('root')!).render(
-  <PolarisAppProvider i18n={{}}>
+  <PolarisAppProvider i18n={enPolarisTranslations}>
     <BrowserRouter>
       <Routes>
         <Route index element={<Index />} />
