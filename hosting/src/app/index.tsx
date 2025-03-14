@@ -12,13 +12,14 @@ import {
 } from '@shopify/polaris';
 import { TitleBar, useAppBridge } from '@shopify/app-bridge-react';
 import { useFetch } from '../hooks/http-client';
-import AppLink from '../components/app-link';
+import { useAppNavigate } from '../hooks/app-navigate';
 
 export default function App() {
   const shopify = useAppBridge();
   const [isLoading, setLoading] = useState(false);
   const [fetchData, setFetchData] = useState<{ product: object, variant: object } | null>(null);
   const [productId, setProductId] = useState('');
+  const navigate = useAppNavigate();
   const fetch = useFetch();
 
   useEffect(() => {
@@ -73,9 +74,9 @@ export default function App() {
                       App Bridge
                     </Link>{' '}
                     interface examples like an{' '}
-                    <AppLink to="/app/additional">
+                    <Button onClick={() => navigate('/app/additional')} variant="plain">
                       additional page in the app nav
-                    </AppLink>
+                    </Button>
                     , as well as an{' '}
                     <Link
                       url="https://shopify.dev/docs/api/admin-graphql"
