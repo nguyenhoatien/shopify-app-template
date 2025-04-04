@@ -37,7 +37,7 @@
         "function": "auth"
       },
       {
-        "source": "/api/webhooks/**",
+        "source": "/api/webhooks",
         "function": "webhooks"
       },
       {

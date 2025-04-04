@@ -21,6 +21,10 @@ redirect_urls = [
 [webhooks]
 api_version = "2025-01"
 
+[[webhooks.subscriptions]]
+topics = ["app/uninstalled"]
+uri = "https://my-awesome-project-e66af.web.app/api/webhooks/"
+
 [app_proxy]
 url = "https://my-awesome-project-e66af.web.app/api/storefront/"
 subpath = "my-awesome-app-155"

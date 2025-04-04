@@ -8,7 +8,10 @@ import {cookieStorage} from './api.auth';
 
 const app = express();
 
-// https://shopify.dev/docs/api/admin-graphql/latest/enums/WebhookSubscriptionTopic
+// IMPORTANT: Ensure that any changes to the webhooks listed below are reflected
+// in the [[webhooks.subscriptions]] section of the `shopify.app.toml` file.
+// This is required to properly register or deregister webhooks with Shopify.
+// Reference: https://shopify.dev/docs/api/admin-graphql/latest/enums/WebhookSubscriptionTopic
 const webhookHandlers: WebhookHandlersParam = {
   APP_UNINSTALLED: {
     deliveryMethod: DeliveryMethod.Http,
