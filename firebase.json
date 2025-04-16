@@ -41,8 +41,8 @@
         "function": "webhooks"
       },
       {
-        "source": "/api/storefront/**",
-        "function": "storefront"
+        "source": "/api/public/**",
+        "function": "public"
       },
       {
         "source": "**",

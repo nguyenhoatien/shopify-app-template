@@ -25,10 +25,5 @@ api_version = "2025-01"
 topics = ["app/uninstalled"]
 uri = "https://my-awesome-project-e66af.web.app/api/webhooks/"
 
-[app_proxy]
-url = "https://my-awesome-project-e66af.web.app/api/storefront/"
-subpath = "my-awesome-app-155"
-prefix = "apps"
-
 [pos]
 embedded = false

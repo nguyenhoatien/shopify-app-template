@@ -12,7 +12,7 @@ This is a simple template to help you build great Shopify apps.
 
 *   [x] Fix SameSite cookie issue.
 *   [x] Add a webhook demo.
-*   [x] Add a storefront demo.
+*   [x] Add a public api.
 
 ## Getting Started (Installation)
 
