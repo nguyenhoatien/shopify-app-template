@@ -8,16 +8,16 @@
   },
   "scripts": {
     "setup": "npm i && shopify app config link && shopify app env pull && firebase use --add",
-    "predev": "npm run deploy:app -- --force && shopify app env pull",
-    "dev:shopify": "shopify app dev",
-    "dev": "concurrently \"npm run build:functions -- -- --watch\" \"npm run build:hosting -- -- --watch\" \"npm run serve\" \"npm run dev:shopify\"",
+    "cloudflared": "npx cloudflared tunnel --url http://localhost:5000",
     "build:functions": "npm run build --workspace=functions",
     "build:hosting": "npm run build --workspace=hosting",
-    "serve": "firebase emulators:start --import .emulator-data --export-on-exit",
-    "deploy:app": "shopify app deploy",
-    "deploy:firebase": "firebase deploy --only functions,hosting",
-    "deploy": "npm run build:functions && npm run build:hosting && npm run deploy:app -- --force && npm run deploy:firebase",
-    "cloudflared": "npx cloudflared tunnel --url http://localhost:5000"
+    "deploy:shopify": "shopify app deploy --force --config=shopify.app.prod.toml && rm .env.prod",
+    "deploy:firebase": "shopify app env pull --config=shopify.app.prod.toml --env-file=.env && npm run build:functions && npm run build:hosting && firebase deploy --only functions,hosting",
+    "deploy": "npm run deploy:firebase && npm run deploy:shopify",
+    "predev": "shopify app deploy --force && shopify app env pull",
+    "dev:shopify": "shopify app dev",
+    "dev:firebase": "concurrently \"npm run build:functions -- -- --watch\" \"npm run build:hosting -- -- --watch\" \"firebase emulators:start --import .emulator-data --export-on-exit\"",
+    "dev": "concurrently \"npm run dev:firebase\" \"npm run dev:shopify\""
   },
   "workspaces": [
     "extensions",
