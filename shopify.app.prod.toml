@@ -3,7 +3,7 @@
 client_id = "7d34e297e51f6458a3c6cc71f0ba2da6"
 name = "crocsvietnam: Tra cứu đơn hàng"
 handle = "crocsvietnam-tra-cuu"
-application_url = "https://shopify.dev/apps/default-app-home"
+application_url = "https://crocsvietnam-tra-cuu.web.app/app/"
 embedded = true
 
 [build]
