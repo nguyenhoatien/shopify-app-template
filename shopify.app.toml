@@ -1,9 +1,9 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-client_id = "345807df431aedc80af38c5c45ef2ecb"
-name = "My Awesome App"
-handle = "my-awesome-app-155"
-application_url = "https://my-awesome-project-e66af.web.app/app/"
+client_id = "7d34e297e51f6458a3c6cc71f0ba2da6"
+name = "crocsvietnam: Tra cứu đơn hàng"
+handle = "crocsvietnam-tra-cuu"
+application_url = "https://shopify.dev/apps/default-app-home"
 embedded = true
 
 [build]
@@ -11,11 +11,11 @@ include_config_on_deploy = true
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "read_products,write_products"
+scopes = "read_products,write_products,read_orders"
 
 [auth]
 redirect_urls = [
-  "https://my-awesome-project-e66af.web.app/api/auth/callback/"
+  "https://compile-little-deposit-oaks.trycloudflare.com/api/auth/callback/"
 ]
 
 [webhooks]
@@ -23,7 +23,12 @@ api_version = "2025-01"
 
 [[webhooks.subscriptions]]
 topics = ["app/uninstalled"]
-uri = "https://my-awesome-project-e66af.web.app/api/webhooks/"
+uri = "https://compile-little-deposit-oaks.trycloudflare.com/api/webhooks/"
+
+[app_proxy]
+url = "https://compile-little-deposit-oaks.trycloudflare.com/api/public/"
+subpath = "tra-cuu-don-hang"
+prefix = "apps"
 
 [pos]
 embedded = false
