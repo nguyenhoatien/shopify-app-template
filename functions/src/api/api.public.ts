@@ -107,8 +107,10 @@ app.post('/api/public/', async (req, res) => {
   }
 
   res.status(200).json({
+    ...order,
     homedelivery: JSON.parse(order?.homedelivery?.value || 'null'),
     clickandcollect: JSON.parse(order?.clickandcollect?.value || 'null'),
+    lineItems: order.lineItems.edges.map((edge: { node: unknown }) => edge.node),
   });
 });
 
