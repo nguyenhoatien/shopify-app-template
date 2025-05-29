@@ -3,7 +3,7 @@
 client_id = "7d34e297e51f6458a3c6cc71f0ba2da6"
 name = "crocsvietnam: Tra cứu đơn hàng"
 handle = "crocsvietnam-tra-cuu"
-application_url = "https://shopify.dev/apps/default-app-home"
+application_url = "https://crocsvietnam-tra-cuu.web.app/app/"
 embedded = true
 
 [build]
@@ -15,7 +15,7 @@ scopes = "read_products,write_products,read_orders"
 
 [auth]
 redirect_urls = [
-  "https://compile-little-deposit-oaks.trycloudflare.com/api/auth/callback/"
+  "https://crocsvietnam-tra-cuu.web.app/api/auth/callback/"
 ]
 
 [webhooks]
@@ -23,10 +23,10 @@ api_version = "2025-01"
 
 [[webhooks.subscriptions]]
 topics = ["app/uninstalled"]
-uri = "https://compile-little-deposit-oaks.trycloudflare.com/api/webhooks/"
+uri = "https://crocsvietnam-tra-cuu.web.app/api/webhooks/"
 
 [app_proxy]
-url = "https://compile-little-deposit-oaks.trycloudflare.com/api/public/"
+url = "https://crocsvietnam-tra-cuu.web.app/api/public/"
 subpath = "tra-cuu-don-hang"
 prefix = "apps"
 

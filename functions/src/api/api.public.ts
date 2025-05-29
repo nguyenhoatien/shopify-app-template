@@ -33,31 +33,66 @@ app.post('/api/public/', async (req, res) => {
 
   const {email, orderId} = req.body;
 
-  console.log(`#graphql
-    query MyQuery {
-      orders(first: 1, query: "name:${orderId} AND email:${email}") {
-        nodes {
-          homedelivery: metafield(key: "homedelivery", namespace: "custom") {
-            value
-          }
-          clickandcollect: metafield(key: "clickandcollect", namespace: "custom") {
-            value
-          }
-        }
-      }
-    }`);
-
-
   const response = await client.request(
     `#graphql
     query MyQuery {
       orders(first: 1, query: "name:${orderId} AND email:${email}") {
         nodes {
+          createdAt
           homedelivery: metafield(key: "homedelivery", namespace: "custom") {
             value
           }
           clickandcollect: metafield(key: "clickandcollect", namespace: "custom") {
             value
+          }
+          shippingAddress {
+            address1
+            address2
+            name
+            phone
+            city
+            country
+            zip
+          }
+          lineItems(first: 250) {
+            edges {
+              node {
+                name
+                quantity
+                image {
+                  url
+                }
+                originalUnitPriceSet {
+                  presentmentMoney {
+                    amount
+                    currencyCode
+                  }
+                }
+                discountedUnitPriceSet {
+                  presentmentMoney {
+                    amount
+                    currencyCode
+                  }
+                }
+                discountedTotalSet {
+                  presentmentMoney {
+                    amount
+                    currencyCode
+                  }
+                }
+                customAttributes {
+                  key
+                  value
+                }
+              }
+            }
+          }
+          paymentGatewayNames
+          totalPriceSet {
+            presentmentMoney {
+              amount
+              currencyCode
+            }
           }
         }
       }
