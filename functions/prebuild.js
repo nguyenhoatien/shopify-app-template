@@ -35,7 +35,5 @@ const appConfig = (() => {
 })();
 
 envVariables.SHOPIFY_APP_URL = new URL(appConfig.application_url).hostname;
-envVariables.SMTP_USER = 'tiennguyen@meowcart.net';
-envVariables.SMTP_PASSWORD = 'lgfg duvl ykdn lgki';
 
 fs.writeFileSync(`shopify.app.json`, JSON.stringify(envVariables, null, 2));
