@@ -31,12 +31,19 @@ app.post('/api/public/', async (req, res) => {
   const session = res.locals.shopify.session;
   const client = new shopify.api.clients.Graphql({session});
 
-  const {email, orderId} = req.body;
+  const {email, phone, orderId} = req.body;
+
+  let queryStr = `name:${orderId}`;
+  if (email) {
+    queryStr += ` AND email:${email}`;
+  } else if (phone) {
+    queryStr += ` AND phone:${phone}`;
+  }
 
   const response = await client.request(
     `#graphql
     query MyQuery {
-      orders(first: 1, query: "name:${orderId} AND email:${email}") {
+      orders(first: 1, query: "${queryStr}") {
         nodes {
           createdAt
           homedelivery: metafield(key: "homedelivery", namespace: "custom") {
@@ -92,6 +99,18 @@ app.post('/api/public/', async (req, res) => {
             presentmentMoney {
               amount
               currencyCode
+            }
+          }
+          currentShippingPriceSet {
+            presentmentMoney {
+              amount
+              currencyCode
+            }
+          }
+          totalDiscountsSet {
+            presentmentMoney {
+              currencyCode
+              amount
             }
           }
         }

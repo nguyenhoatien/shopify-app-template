@@ -1,9 +1,9 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-client_id = "7d34e297e51f6458a3c6cc71f0ba2da6"
+client_id = "7d34e297e51f6458a3c6cc71f0ba2da6eee"
 name = "crocsvietnam: Tra cứu đơn hàng"
 handle = "crocsvietnam-tra-cuu"
-application_url = "https://crocsvietnam-tra-cuu.web.app/app/"
+application_url = "https://economy-hwy-tree-fraser.trycloudflare.com/app/"
 embedded = true
 
 [build]
@@ -15,7 +15,7 @@ scopes = "read_products,write_products,read_orders,read_customers"
 
 [auth]
 redirect_urls = [
-  "https://crocsvietnam-tra-cuu.web.app/api/auth/callback/"
+  "https://economy-hwy-tree-fraser.trycloudflare.com/api/auth/callback/"
 ]
 
 [webhooks]
@@ -23,10 +23,10 @@ api_version = "2025-01"
 
 [[webhooks.subscriptions]]
 topics = ["app/uninstalled"]
-uri = "https://crocsvietnam-tra-cuu.web.app/api/webhooks/"
+uri = "https://economy-hwy-tree-fraser.trycloudflare.com/api/webhooks/"
 
 [app_proxy]
-url = "https://crocsvietnam-tra-cuu.web.app/api/public/"
+url = "https://economy-hwy-tree-fraser.trycloudflare.com/api/public/"
 subpath = "tra-cuu-don-hang"
 prefix = "apps"
 
