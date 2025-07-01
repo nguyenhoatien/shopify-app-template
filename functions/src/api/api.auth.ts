@@ -24,9 +24,8 @@ export const cookieStorage = {
 
 app.get(shopify.config.auth.path,
   async (req, res, next) => {
-    await shopify.auth.begin()(req, res, next);
-  },
-  async (req, res, next) => {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    await shopify.auth.begin()(req, res, () => { });
     const shop = req.query.shop as string;
     const cookie = res.getHeader('Set-Cookie') as string[];
     await cookieStorage.storeCookie(shop, cookie);
