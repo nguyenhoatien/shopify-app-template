@@ -4,6 +4,7 @@ import shopify from '../shopify.server';
 import {db} from '../firebase.server';
 
 const app = express();
+
 // Fix: Firebase Hosting strips cookies (https://firebase.google.com/docs/hosting/manage-cache#using_cookies)
 export const cookieStorage = {
   collection: db.collection('shopify-cookies'),
@@ -24,12 +25,10 @@ export const cookieStorage = {
 
 app.get(shopify.config.auth.path,
   async (req, res, next) => {
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    await shopify.auth.begin()(req, res, () => { });
+    await shopify.auth.begin()(req, res, next);
     const shop = req.query.shop as string;
     const cookie = res.getHeader('Set-Cookie') as string[];
     await cookieStorage.storeCookie(shop, cookie);
-    next();
   }
 );
 
@@ -46,7 +45,12 @@ app.get(
     }
     next();
   },
-  shopify.auth.callback(),
+  async (req, res, next) => {
+    await shopify.auth.callback()(req, res, next);
+    const shop = req.query.shop as string;
+    const cookie = res.getHeader('Set-Cookie') as string[];
+    await cookieStorage.storeCookie(shop, cookie);
+  },
   shopify.redirectToShopifyOrAppRoot(),
 );
 
